@@ -1,0 +1,14 @@
+,Score
+MAE_QNH_llm,1.62
+MAE_QNH_metmodel,1.02
+MAE_dir_metmodel,67.0
+MAE_dir_llm,51.0
+MAE_wind_int_metmodel,2.93
+MAE_wind_int_llm,2.55
+HSS_prec_llm,0.43
+HSS_prec_metmodel,0.39
+HHS_vis_llm,0.46
+MAE_temp_metmodel,1.42
+Std_temp_diff_metmodel,1.82
+MAE_temp_llm,1.5
+Std_temp_diff_metmodel,1.98
