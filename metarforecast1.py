@@ -23,7 +23,7 @@ default_option = options[0]  # Set the default option
 # Create a radio button to select the string variable
 oaci = st.radio("Select airport", options, index=0)
 
-meteorologic_model = False
+meteorologic_model = True
 sequence_length = 13
 
 def custom_round(value):
