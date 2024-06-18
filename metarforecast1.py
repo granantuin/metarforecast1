@@ -411,12 +411,12 @@ for ind in range(2, len(global_r)):
     y_pred_value = global_r.iloc[ind]["y_pred"]
     time_str = ""
     if pd.isna(y_pred_value):
-        time_str = global_r.iloc[ind]["metar_o"].split()[1][:].upper()
+        time_str = global_r.iloc[ind]["metar_o"].split()[1].upper()
     else:
         if isinstance(y_pred_value, str):
-            time_str = y_pred_value.split()[1][:].upper()
+            time_str = y_pred_value.split()[1].upper()
         else:
-            time_str = global_r.iloc[ind]["metar_o"].split()[1][:].upper()
+            time_str = global_r.iloc[ind]["metar_o"].split()[1].upper()
     
     st.write("Time:", time_str)
     st.write("Real METAR    :", global_r.iloc[ind]["metar_o"])
