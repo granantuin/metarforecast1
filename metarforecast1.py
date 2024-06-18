@@ -13,7 +13,7 @@ import pandas as pd
 from datetime import timedelta
 import streamlit as st
 
-st.set_page_config(page_title="Metar Forecast",layout="wide")
+st.set_page_config(page_title="Metar Forecast 1",layout="wide")
 
 #@title operational
 oaci = "LEVX" # @param ["LEVX", "LEST","LECO"]
@@ -393,7 +393,7 @@ def delete_words_beyond_nosig(input_string):
     return ' '.join(words[:index_nosig + 1])
 
 
-text_test = df_all["model_seed"][:23]
+text_test = df_all["model_seed"][23:48]
 all_for_text = []
 y_pred =[]
 for i in range(len(text_test)):
@@ -401,7 +401,7 @@ for i in range(len(text_test)):
   y_pred.append(delete_words_beyond_nosig(delete_first_n_words(all_for_text[i], 8)))
 
 
-result = pd.DataFrame({"y_pred":y_pred,"all":df_all["model_seed"][:23].values})
+result = pd.DataFrame({"y_pred":y_pred,"all":df_all["model_seed"][23:48].values})
 result.index=text_test.index
 result["y_pred"] = oaci.lower()+" "+result.index.strftime('%d%H%Mz')+" "+result["y_pred"]
 metar = get_metar(oaci,True)["metar_o"]
@@ -411,12 +411,12 @@ for ind in range(2, len(global_r)):
     y_pred_value = global_r.iloc[ind]["y_pred"]
     time_str = ""
     if pd.isna(y_pred_value):
-        time_str = global_r.iloc[ind]["metar_o"].split()[1][2:].upper()
+        time_str = global_r.iloc[ind]["metar_o"].split()[1][:].upper()
     else:
         if isinstance(y_pred_value, str):
-            time_str = y_pred_value.split()[1][2:].upper()
+            time_str = y_pred_value.split()[1][:].upper()
         else:
-            time_str = global_r.iloc[ind]["metar_o"].split()[1][2:].upper()
+            time_str = global_r.iloc[ind]["metar_o"].split()[1][:].upper()
     
     st.write("Time:", time_str)
     st.write("Real METAR    :", global_r.iloc[ind]["metar_o"])
@@ -426,5 +426,5 @@ for ind in range(2, len(global_r)):
     st.write("*************")
 
 # Display the CSV file
-score_df = pd.read_csv(oaci + "score.csv").set_index("Unnamed: 0")
+score_df = pd.read_csv(oaci + "score1.csv").set_index("Unnamed: 0")
 st.dataframe(score_df)
