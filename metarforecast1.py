@@ -407,7 +407,7 @@ result["y_pred"] = oaci.lower()+" "+result.index.strftime('%d%H%Mz')+" "+result[
 metar = get_metar(oaci,True)["metar_o"]
 global_r = pd.concat([result,metar],axis=1)
 
-for ind in range(2, len(global_r)):
+for ind in range(19, len(global_r)):
     y_pred_value = global_r.iloc[ind]["y_pred"]
     time_str = ""
     if pd.isna(y_pred_value):
